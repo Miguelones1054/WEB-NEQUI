@@ -94,7 +94,7 @@ export default function Home() {
         <div className={styles.videoContainer}>
           <iframe
             className={styles.videoFrame}
-            src={`https://www.youtube.com/embed/t4KljIZcdEM?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=t4KljIZcdEM${isMuted ? '&mute=1' : ''}`}
+            src={`https://www.youtube.com/embed/2QGoQmaOdsA?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=2QGoQmaOdsA${isMuted ? '&mute=1' : ''}`}
             title="Demostración Nequi Alpha"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

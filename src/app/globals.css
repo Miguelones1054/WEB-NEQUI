@@ -60,3 +60,19 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Ocultar el botón de Next.js */
+#__next-build-watcher,
+.__next-build-watcher {
+  display: none !important;
+}
+
+/* Ocultar cualquier elemento relacionado con Vercel */
+.vercel-badge,
+.vercel-logo,
+[data-nextjs-dialog],
+[data-nextjs-terminal],
+[data-nextjs-codeframe],
+[data-nextjs-build-error] {
+  display: none !important;
+}
