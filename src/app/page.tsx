@@ -4,40 +4,30 @@ import styles from "./page.module.css";
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [showSubtitle, setShowSubtitle] = useState(false);
+  // Eliminamos los estados para animaciones
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
-    // Forzar el fondo oscuro rojizo
-    document.body.style.backgroundColor = "#0a0000";
-    document.body.style.background = "radial-gradient(circle at center, #200000, #100000, #000000)";
-    document.documentElement.style.backgroundColor = "#0a0000";
-    document.documentElement.style.background = "radial-gradient(circle at center, #200000, #100000, #000000)";
+    // Forzar el fondo negro sólido
+    document.body.style.backgroundColor = "#000000";
+    document.body.style.background = "#000000";
+    document.documentElement.style.backgroundColor = "#000000";
+    document.documentElement.style.background = "#000000";
     
-    // Eliminar cualquier fondo azul que pueda estar persistiendo
+    // Eliminar cualquier efecto de fondo
     const style = document.createElement('style');
     style.innerHTML = `
-      html, body, #__next, .${styles.page} {
-        background: radial-gradient(circle at center, #200000, #100000, #000000) !important;
-        background-color: #0a0000 !important;
+      html, body, #__next, .${styles.page}, * {
+        background: #000000 !important;
+        background-color: #000000 !important;
+      }
+      .${styles.container} {
+        background: none !important;
       }
     `;
     document.head.appendChild(style);
     
-    // Mostrar el título con animación después de un breve retraso
-    const titleTimer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 100);
-    
-    // Mostrar el subtítulo después del título
-    const subtitleTimer = setTimeout(() => {
-      setShowSubtitle(true);
-    }, 800);
-    
     return () => {
-      clearTimeout(titleTimer);
-      clearTimeout(subtitleTimer);
       document.head.removeChild(style);
     };
   }, []);
@@ -62,36 +52,11 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.page} style={{ backgroundColor: "#0a0000", background: "radial-gradient(circle at center, #200000, #100000, #000000)" }}>
-      <div className={styles.smokeContainer}>
-        <div className={styles.smokeLayer}></div>
-        <div className={styles.smokeLayer} style={{ animationDelay: "-5s" }}></div>
-        <div className={styles.smokeLayer} style={{ animationDelay: "-10s" }}></div>
-        <div className={styles.smokeLayer} style={{ animationDelay: "-15s" }}></div>
-      </div>
-      
-      <div className={styles.floatingParticles}>
-        <div className={styles.particle} style={{ top: '5%', left: '10%' }}></div>
-        <div className={styles.particle} style={{ top: '15%', left: '30%' }}></div>
-        <div className={styles.particle} style={{ top: '25%', left: '80%' }}></div>
-        <div className={styles.particle} style={{ top: '40%', left: '15%' }}></div>
-        <div className={styles.particle} style={{ top: '55%', left: '70%' }}></div>
-        <div className={styles.particle} style={{ top: '65%', left: '40%' }}></div>
-        <div className={styles.particle} style={{ top: '75%', left: '85%' }}></div>
-        <div className={styles.particle} style={{ top: '85%', left: '25%' }}></div>
-        <div className={styles.particle} style={{ top: '10%', left: '60%' }}></div>
-        <div className={styles.particle} style={{ top: '30%', left: '45%' }}></div>
-        <div className={styles.particle} style={{ top: '50%', left: '90%' }}></div>
-        <div className={styles.particle} style={{ top: '70%', left: '20%' }}></div>
-        <div className={styles.particle} style={{ top: '80%', left: '50%' }}></div>
-        <div className={styles.particle} style={{ top: '20%', left: '70%' }}></div>
-        <div className={styles.particle} style={{ top: '60%', left: '5%' }}></div>
-      </div>
-      
+    <div className={styles.page} style={{ backgroundColor: "#000000", background: "#000000" }}>
       <div className={styles.container}>
-        <h1 className={`${styles.title} ${isLoaded ? styles.titleVisible : ''}`}>Nequi Alpha</h1>
+        <h1 className={styles.title}>Nequi Alpha</h1>
         
-        <div className={styles.videoContainer}>
+        <div className={styles.simpleVideoContainer}>
           <iframe
             className={styles.videoFrame}
             src={`https://www.youtube.com/embed/2QGoQmaOdsA?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=2QGoQmaOdsA${isMuted ? '&mute=1' : ''}`}
@@ -100,8 +65,6 @@ export default function Home() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-          <div className={styles.phoneNotch}></div>
-          <div className={styles.phoneButton}></div>
           <button 
             className={styles.soundToggle} 
             onClick={toggleSound}
@@ -128,7 +91,7 @@ export default function Home() {
           </button>
         </div>
         
-        <p className={`${styles.subtitle} ${showSubtitle ? styles.subtitleVisible : ''}`}>
+        <p className={styles.subtitle}>
           La mejor app que imita a Nequi para realizar pagos falsos a negocios o personas
         </p>
         <a href="https://t.me/Nequi_Alpha" className={styles.button} target="_blank" rel="noopener noreferrer">

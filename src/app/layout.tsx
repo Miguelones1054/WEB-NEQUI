@@ -27,12 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" style={{ backgroundColor: "#0a0000", background: "radial-gradient(circle at center, #200000, #100000, #000000)" }}>
+    <html lang="es" style={{ backgroundColor: "#000000", background: "#000000" }}>
       <body 
         className={`${orbitron.variable} ${rajdhani.variable}`}
         style={{ 
-          backgroundColor: "#0a0000",
-          background: "radial-gradient(circle at center, #200000, #100000, #000000)"
+          backgroundColor: "#000000",
+          background: "#000000"
         }}
       >
         <ClientLayout>{children}</ClientLayout>
